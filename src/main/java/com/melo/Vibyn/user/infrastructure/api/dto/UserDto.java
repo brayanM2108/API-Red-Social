@@ -1,4 +1,10 @@
 package com.melo.Vibyn.user.infrastructure.api.dto;
 
-public class UserDto {
-}
+public record UserDto (
+
+        Long id,
+        String name,
+        String nickname,
+        String email,
+        String status
+) {}
