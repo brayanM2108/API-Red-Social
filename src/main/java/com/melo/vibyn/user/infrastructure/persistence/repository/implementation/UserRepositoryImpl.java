@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -26,5 +27,11 @@ public class UserRepositoryImpl implements UserRepository {
     return userRepository.findAll().stream()
                 .map(userMapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id)
+                .map(userMapper::toDomain);
     }
 }

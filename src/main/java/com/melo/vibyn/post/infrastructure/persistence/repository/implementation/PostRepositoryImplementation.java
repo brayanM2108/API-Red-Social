@@ -21,6 +21,6 @@ public class PostRepositoryImplementation implements PostRepository {
 
     @Override
     public Optional<Post> findById(Long id) {
-        return Optional.empty();
+        return postRepository.findById(id).map(postEntityMapper::toDomain);
     }
 }
