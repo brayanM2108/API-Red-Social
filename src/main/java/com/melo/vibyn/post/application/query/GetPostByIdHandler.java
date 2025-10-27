@@ -41,7 +41,7 @@ public class GetPostByIdHandler implements RequestHandler<GetPostByIdRequest, Ge
                 post.createdAt()
         );
 
-        return new GetPostByIdResponse(postMapper.toPostViewDto(postWithCreator));
+        return new GetPostByIdResponse(postMapper.toPostDto(postWithCreator));
 
     }
 

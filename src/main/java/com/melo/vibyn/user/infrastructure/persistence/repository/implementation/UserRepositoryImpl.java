@@ -2,6 +2,7 @@ package com.melo.vibyn.user.infrastructure.persistence.repository.implementation
 
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.domain.port.UserRepository;
+import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
 import com.melo.vibyn.user.infrastructure.persistence.mapper.UserEntityMapper;
 import com.melo.vibyn.user.infrastructure.persistence.repository.QueryUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,12 @@ public class UserRepositoryImpl implements UserRepository {
     public Optional<User> findById(Long id) {
         return userRepository.findById(id)
                 .map(userMapper::toDomain);
+    }
+
+    @Override
+    public User save(User user) {
+        UserEntity userEntity = userMapper.toEntity(user);
+        UserEntity save = userRepository.save(userEntity);
+        return userMapper.toDomain(save);
     }
 }

@@ -5,5 +5,5 @@ import com.melo.vibyn.post.infrastructure.api.dto.PostViewDto;
 
 public interface PostMapperPort {
 
-    PostViewDto toPostViewDto(PostWithCreator post);
+    PostViewDto toPostDto(PostWithCreator post);
 }

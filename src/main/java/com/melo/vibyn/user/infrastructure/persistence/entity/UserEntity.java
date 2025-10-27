@@ -28,6 +28,9 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(columnDefinition = "TEXT")
+    private String biography;
+
     @Column(nullable = false)
     private String password;
 

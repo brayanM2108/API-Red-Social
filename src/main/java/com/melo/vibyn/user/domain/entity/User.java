@@ -8,6 +8,7 @@ public record User (
         String name,
         String nickname,
         String email,
+        String biography,
         String password,
         LocalDateTime createdAt,
         Boolean status
