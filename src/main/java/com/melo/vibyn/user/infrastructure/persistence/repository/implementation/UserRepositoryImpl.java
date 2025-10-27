@@ -42,4 +42,9 @@ public class UserRepositoryImpl implements UserRepository {
         UserEntity save = userRepository.save(userEntity);
         return userMapper.toDomain(save);
     }
+
+    @Override
+    public Boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 }
