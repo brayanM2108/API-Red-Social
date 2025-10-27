@@ -4,25 +4,26 @@ import com.melo.vibyn.mediator.Mediator;
 import com.melo.vibyn.post.application.query.GetPostByIdRequest;
 import com.melo.vibyn.post.application.query.GetPostByIdResponse;
 import com.melo.vibyn.post.infrastructure.api.dto.PostViewDto;
+import com.melo.vibyn.post.infrastructure.api.mapper.PostMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/posts")
 public class PostController implements PostApi{
 
     private final Mediator mediator;
-
-    public PostController(Mediator mediator) {
-        this.mediator = mediator;
-    }
-
+    private final PostMapper postMapper;
 
     @Override
     @GetMapping("/{id}")
     public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") Long id) {
         GetPostByIdRequest request = new GetPostByIdRequest(id);
         GetPostByIdResponse response = mediator.dispatch(request);
-        return ResponseEntity.ok(response.getPost());
+
+        PostViewDto post = postMapper.toPostDto(response.getPost());
+        return ResponseEntity.ok(post);
     }
 }
