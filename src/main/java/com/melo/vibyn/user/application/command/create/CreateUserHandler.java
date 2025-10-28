@@ -4,6 +4,7 @@ import com.melo.vibyn.common.mediator.RequestHandler;
 
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.domain.exception.EmailAlreadyExistsException;
+import com.melo.vibyn.user.domain.exception.NicknameAlreadyExistsException;
 import com.melo.vibyn.user.domain.port.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class CreateUserHandler implements RequestHandler<CreateUserRequest, Crea
             throw new EmailAlreadyExistsException(request.user().email());
         }
 
+        if (userRepository.existsByNickname(request.user().nickname())){
+            throw new NicknameAlreadyExistsException(request.user().nickname());
+        }
+        
         User saved = userRepository.save(request.user());
         return new CreateUserResponse(saved);
     }
