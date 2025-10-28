@@ -7,6 +7,7 @@ import com.melo.vibyn.post.infrastructure.persistence.repository.QueryPostReposi
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class PostRepositoryImplementation implements PostRepository {
@@ -20,7 +21,7 @@ public class PostRepositoryImplementation implements PostRepository {
     }
 
     @Override
-    public Optional<Post> findById(Long id) {
+    public Optional<Post> findById(UUID id) {
         return postRepository.findById(id).map(postEntityMapper::toDomain);
     }
 }

@@ -1,8 +1,10 @@
 package com.melo.vibyn.user.infrastructure.api.dto;
 
+import java.util.UUID;
+
 public record UserDto (
 
-        Long id,
+        UUID id,
         String name,
         String nickname,
         String email,

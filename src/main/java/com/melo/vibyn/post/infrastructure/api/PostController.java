@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/posts")
@@ -19,7 +21,7 @@ public class PostController implements PostApi{
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") Long id) {
+    public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") UUID id) {
         GetPostByIdRequest request = new GetPostByIdRequest(id);
         GetPostByIdResponse response = mediator.dispatch(request);
 

@@ -1,10 +1,11 @@
 package com.melo.vibyn.user.domain.entity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record User (
 
-        Long id,
+        UUID id,
         String name,
         String nickname,
         String email,
