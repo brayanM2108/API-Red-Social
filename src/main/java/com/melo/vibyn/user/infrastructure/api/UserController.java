@@ -1,15 +1,20 @@
 package com.melo.vibyn.user.infrastructure.api;
 
 import com.melo.vibyn.mediator.Mediator;
+import com.melo.vibyn.user.application.command.create.CreateUserRequest;
+import com.melo.vibyn.user.application.command.create.CreateUserResponse;
 import com.melo.vibyn.user.application.query.GetAllUserRequest;
 import com.melo.vibyn.user.application.query.GetAllUserResponse;
+import com.melo.vibyn.user.domain.entity.User;
+import com.melo.vibyn.user.infrastructure.api.dto.UserCreatedDto;
 import com.melo.vibyn.user.infrastructure.api.dto.UserDto;
+import com.melo.vibyn.user.infrastructure.api.dto.UserRegisterDto;
 import com.melo.vibyn.user.infrastructure.api.mapper.UserMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +33,15 @@ public class UserController implements UserApi{
         List<UserDto> users = userMapper.toUserListDto(response.users());
         return ResponseEntity.ok(users);
     }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<UserCreatedDto> save(@RequestBody @Valid UserRegisterDto userRegisterDto) {
+        User user = userMapper.toUser(userRegisterDto);
+        CreateUserResponse response = mediator.dispatch(new CreateUserRequest(user));
+        UserCreatedDto userCreatedDto = userMapper.toUserCreatedDto(response.user());
+        return new ResponseEntity<>(userCreatedDto, HttpStatus.CREATED);
+    }
+
+
 }

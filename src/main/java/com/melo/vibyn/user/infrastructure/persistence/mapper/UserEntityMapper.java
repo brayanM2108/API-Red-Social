@@ -3,6 +3,7 @@ package com.melo.vibyn.user.infrastructure.persistence.mapper;
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
@@ -12,6 +13,13 @@ public interface UserEntityMapper {
     UserEntity toEntity(User user);
 
     User toDomain(UserEntity userEntity);
+
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "biography", ignore = true)
+    UserEntity toEntityRegister(User user);
 
 
 }

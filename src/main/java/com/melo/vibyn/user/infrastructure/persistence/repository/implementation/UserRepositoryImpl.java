@@ -38,7 +38,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
-        UserEntity userEntity = userMapper.toEntity(user);
+        UserEntity userEntity = userMapper.toEntityRegister(user);
         UserEntity save = userRepository.save(userEntity);
         return userMapper.toDomain(save);
     }

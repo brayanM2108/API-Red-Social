@@ -1,9 +1,9 @@
 package com.melo.vibyn.user.infrastructure.api.mapper;
 
-import com.melo.vibyn.user.application.command.create.CreateUserRequest;
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.infrastructure.api.dto.UserCreatedDto;
 import com.melo.vibyn.user.infrastructure.api.dto.UserDto;
+import com.melo.vibyn.user.infrastructure.api.dto.UserRegisterDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -18,11 +18,12 @@ public interface UserMapper {
 
     List<UserDto> toUserListDto (List<User> user);
 
+
     @Mapping(target = "status", ignore = true)
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "biography", ignore = true)
-    @Mapping(target = "id", ignore = true)
-    User toUser(CreateUserRequest request);
+    User toUser(UserRegisterDto userRegisterDto);
 
     UserCreatedDto toUserCreatedDto(User user);
 }
