@@ -1,6 +1,6 @@
 package com.melo.vibyn.user.application.query;
 
-import com.melo.vibyn.mediator.RequestHandler;
+import com.melo.vibyn.common.mediator.RequestHandler;
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.domain.port.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package com.melo.vibyn.post.application.query;
 
-import com.melo.vibyn.mediator.RequestHandler;
+import com.melo.vibyn.common.mediator.RequestHandler;
 import com.melo.vibyn.post.domain.entity.Post;
 import com.melo.vibyn.post.domain.entity.PostWithCreator;
 import com.melo.vibyn.post.domain.port.PostRepository;

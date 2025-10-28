@@ -35,7 +35,7 @@ public class UserEntity {
     private String password;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now().withNano(0);;
+    private LocalDateTime createdAt = LocalDateTime.now().withNano(0);
 
     @Column(nullable = false)
     private Boolean status = true;

@@ -1,8 +1,9 @@
 package com.melo.vibyn.user.application.command.create;
 
-import com.melo.vibyn.mediator.RequestHandler;
+import com.melo.vibyn.common.mediator.RequestHandler;
 
 import com.melo.vibyn.user.domain.entity.User;
+import com.melo.vibyn.user.domain.exception.EmailAlreadyExistsException;
 import com.melo.vibyn.user.domain.port.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class CreateUserHandler implements RequestHandler<CreateUserRequest, Crea
 
     @Override
     public CreateUserResponse handle(CreateUserRequest request) {
+
+        if (userRepository.existsByEmail(request.user().email())){
+            throw new EmailAlreadyExistsException(request.user().email());
+        }
 
         User saved = userRepository.save(request.user());
         return new CreateUserResponse(saved);

@@ -1,6 +1,6 @@
 package com.melo.vibyn.post.infrastructure.api;
 
-import com.melo.vibyn.mediator.Mediator;
+import com.melo.vibyn.common.mediator.Mediator;
 import com.melo.vibyn.post.application.query.GetPostByIdRequest;
 import com.melo.vibyn.post.application.query.GetPostByIdResponse;
 import com.melo.vibyn.post.infrastructure.api.dto.PostViewDto;

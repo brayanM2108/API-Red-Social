@@ -1,4 +1,4 @@
-package com.melo.vibyn.mediator;
+package com.melo.vibyn.common.mediator;
 
 import org.springframework.stereotype.Component;
 
