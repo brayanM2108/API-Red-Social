@@ -4,7 +4,9 @@ import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.domain.port.UserRepository;
 import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
 import com.melo.vibyn.user.infrastructure.persistence.mapper.UserEntityMapper;
+import com.melo.vibyn.user.infrastructure.persistence.repository.JpaUserRepository;
 import com.melo.vibyn.user.infrastructure.persistence.repository.QueryUserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,16 +15,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
-    private final QueryUserRepository userRepository;
+    private final JpaUserRepository userRepository;
     private final UserEntityMapper userMapper;
-
-    @Autowired
-    public UserRepositoryImpl(QueryUserRepository userRepository, UserEntityMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
 
     @Override
     public List<User> findAll() {
