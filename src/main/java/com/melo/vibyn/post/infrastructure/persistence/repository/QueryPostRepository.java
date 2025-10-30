@@ -13,16 +13,15 @@ import java.util.UUID;
 public interface QueryPostRepository extends JpaRepository <PostEntity, UUID>{
 
     @Query("""
-    SELECT new com.melo.vibyn.post.infrastructure.api.dto.PostViewDto(
-        p.id,
-        u.nickname,
-        p.title,
-        p.content,
-        p.createdAt
-    )
+SELECT new com.melo.vibyn.post.infrastructure.api.dto.PostViewDto(
+    p.id,
+    p.creator.nickname,
+    p.title,
+    p.content,
+    p.createdAt
+)
     FROM PostEntity p
-    INNER JOIN UserEntity u ON p.id = u.id
-    WHERE p.creator = :userId
+    WHERE p.creator.id = :userId
     AND p.status = true
     ORDER BY p.createdAt DESC
     """)
