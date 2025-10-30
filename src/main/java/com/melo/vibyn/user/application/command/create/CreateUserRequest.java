@@ -4,6 +4,5 @@ import com.melo.vibyn.common.mediator.Request;
 import com.melo.vibyn.user.domain.entity.User;
 
 
-public record CreateUserRequest(
-        User user) implements Request<CreateUserResponse> {
+public record CreateUserRequest(User user) implements Request<CreateUserResponse> {
 }

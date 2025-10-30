@@ -1,5 +1,6 @@
 package com.melo.vibyn.user.infrastructure.api.dto;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record UserDto (
@@ -8,5 +9,5 @@ public record UserDto (
         String name,
         String nickname,
         String email,
-        String status
+        LocalDateTime createdAt
 ) {}
