@@ -3,6 +3,7 @@ package com.melo.vibyn.common.exceptions;
 import com.melo.vibyn.post.domain.exception.PostNotFoundException;
 import com.melo.vibyn.user.domain.exception.EmailAlreadyExistsException;
 import com.melo.vibyn.user.domain.exception.NicknameAlreadyExistsException;
+import com.melo.vibyn.user.domain.exception.UserNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,8 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler({
-            PostNotFoundException.class
+            PostNotFoundException.class,
+            UserNotFoundException.class
     })
     public ResponseEntity<ErrorResponse> handleNotFoundException(HttpServletRequest request, Exception ex) {
         ErrorResponse error = new ErrorResponse(
