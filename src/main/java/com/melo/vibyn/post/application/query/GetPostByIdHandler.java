@@ -3,6 +3,7 @@ package com.melo.vibyn.post.application.query;
 import com.melo.vibyn.common.mediator.RequestHandler;
 import com.melo.vibyn.post.domain.entity.Post;
 import com.melo.vibyn.post.domain.entity.PostWithCreator;
+import com.melo.vibyn.post.domain.exception.PostNotFoundException;
 import com.melo.vibyn.post.domain.port.PostRepository;
 import com.melo.vibyn.user.domain.entity.User;
 import com.melo.vibyn.user.domain.port.UserRepository;
@@ -19,7 +20,7 @@ public class GetPostByIdHandler implements RequestHandler<GetPostByIdRequest, Ge
     @Override
     public GetPostByIdResponse handle(GetPostByIdRequest request) {
         Post post = postRepository.findById(request.getId())
-                .orElseThrow(() -> new RuntimeException("Post not found with id: " + request.getId()));
+                .orElseThrow(() -> new PostNotFoundException(request.getId()));
 
 
         User user = userRepository.findById(post.userId())

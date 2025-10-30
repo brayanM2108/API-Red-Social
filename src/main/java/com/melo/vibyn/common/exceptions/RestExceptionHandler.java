@@ -1,5 +1,6 @@
 package com.melo.vibyn.common.exceptions;
 
+import com.melo.vibyn.post.domain.exception.PostNotFoundException;
 import com.melo.vibyn.user.domain.exception.EmailAlreadyExistsException;
 import com.melo.vibyn.user.domain.exception.NicknameAlreadyExistsException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +30,20 @@ public class RestExceptionHandler {
         );
         error.getErrors().put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
+
+    @ExceptionHandler({
+            PostNotFoundException.class
+    })
+    public ResponseEntity<ErrorResponse> handleNotFoundException(HttpServletRequest request, Exception ex) {
+        ErrorResponse error = new ErrorResponse(
+                ex.getClass().getSimpleName(),
+                HttpStatus.NOT_FOUND.value(),
+                new Timestamp(System.currentTimeMillis()),
+                request.getRequestURI()
+        );
+        error.getErrors().put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
