@@ -1,4 +1,4 @@
-package com.melo.vibyn.post.application.query;
+package com.melo.vibyn.post.application.query.getById;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
 import com.melo.vibyn.post.domain.entity.Post;

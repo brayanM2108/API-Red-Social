@@ -1,4 +1,4 @@
-package com.melo.vibyn.post.application.query;
+package com.melo.vibyn.post.application.query.getById;
 
 import com.melo.vibyn.common.mediator.Request;
 import lombok.AllArgsConstructor;
