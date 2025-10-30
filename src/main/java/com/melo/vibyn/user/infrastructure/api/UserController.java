@@ -1,8 +1,6 @@
 package com.melo.vibyn.user.infrastructure.api;
 
 import com.melo.vibyn.common.mediator.Mediator;
-import com.melo.vibyn.post.application.query.getAllByUser.GetAllPostByUserIdRequest;
-import com.melo.vibyn.post.application.query.getAllByUser.GetAllPostByUserIdResponse;
 import com.melo.vibyn.user.application.command.create.CreateUserRequest;
 import com.melo.vibyn.user.application.command.create.CreateUserResponse;
 import com.melo.vibyn.user.application.query.GetAllUserRequest;
