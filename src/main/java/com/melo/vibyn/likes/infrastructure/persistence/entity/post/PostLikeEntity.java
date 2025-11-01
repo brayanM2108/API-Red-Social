@@ -1,4 +1,4 @@
-package com.melo.vibyn.likes.infrastructure.persistence.entity;
+package com.melo.vibyn.likes.infrastructure.persistence.entity.post;
 
 import com.melo.vibyn.post.infrastructure.persistence.entity.PostEntity;
 import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "likes")
-public class LikeEntity {
+@Table(name = "likes_post")
+public class PostLikeEntity {
 
     @EmbeddedId
-    private LikeId id;
+    private PostLikeId id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("userId")

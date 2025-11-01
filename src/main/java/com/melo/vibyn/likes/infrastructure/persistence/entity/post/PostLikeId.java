@@ -1,4 +1,4 @@
-package com.melo.vibyn.likes.infrastructure.persistence.entity;
+package com.melo.vibyn.likes.infrastructure.persistence.entity.post;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class LikeId implements Serializable {
+public class PostLikeId implements Serializable {
 
     @Column(name = "user_id", nullable = false)
     private UUID userId;
