@@ -31,6 +31,10 @@ public class CommentEntity {
     @JoinColumn(name = "post_id", nullable = false)
     private PostEntity post;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_comment_id")
+    private CommentEntity parentComment;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
