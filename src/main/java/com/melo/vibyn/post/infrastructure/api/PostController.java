@@ -1,12 +1,17 @@
 package com.melo.vibyn.post.infrastructure.api;
 
 import com.melo.vibyn.common.mediator.Mediator;
+import com.melo.vibyn.post.application.command.create.CreatePostRequest;
+import com.melo.vibyn.post.application.command.create.CreatePostResponse;
 import com.melo.vibyn.post.application.query.getAllByUser.GetAllPostByUserIdRequest;
 import com.melo.vibyn.post.application.query.getAllByUser.GetAllPostByUserIdResponse;
 import com.melo.vibyn.post.application.query.getById.GetPostByIdRequest;
 import com.melo.vibyn.post.application.query.getById.GetPostByIdResponse;
+import com.melo.vibyn.post.domain.entity.Post;
+import com.melo.vibyn.post.infrastructure.api.dto.PostCreateDto;
 import com.melo.vibyn.post.infrastructure.api.dto.PostViewDto;
 import com.melo.vibyn.post.infrastructure.api.mapper.PostMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.UUID;
 
 @RestController
@@ -46,5 +52,16 @@ public class PostController implements PostApi{
         GetAllPostByUserIdResponse response = mediator.dispatch(request);
 
         return new ResponseEntity<>(response.getPost(), HttpStatus.OK);
+    }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<Void> save(@RequestBody @Valid PostCreateDto postDto) {
+        CreatePostRequest request = postMapper.toCreatePostRequest(postDto);
+        CreatePostResponse response = mediator.dispatch(request);
+        Post post = response.post();
+
+        return ResponseEntity.created(URI.create("/api/v1/posts/".concat(post.id().toString()))).build();
+
     }
 }
