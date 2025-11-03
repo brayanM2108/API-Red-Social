@@ -5,9 +5,7 @@ import com.melo.vibyn.user.domain.port.UserRepository;
 import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
 import com.melo.vibyn.user.infrastructure.persistence.mapper.UserEntityMapper;
 import com.melo.vibyn.user.infrastructure.persistence.repository.JpaUserRepository;
-import com.melo.vibyn.user.infrastructure.persistence.repository.QueryUserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -49,5 +47,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public Boolean existsByNickname(String nickname) {
         return userRepository.existsByNickname(nickname);
+    }
+
+    @Override
+    public Boolean existsById(UUID id) {
+        return userRepository.existsById(id);
     }
 }

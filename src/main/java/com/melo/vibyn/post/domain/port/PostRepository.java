@@ -8,4 +8,8 @@ public interface PostRepository {
 
     Optional<Post> findById(UUID id);
 
+    Boolean existsById(UUID id);
+
+    Post save(Post post);
+
 }
