@@ -4,6 +4,8 @@ package com.melo.vibyn.comment.application.query.getByPost;
 import com.melo.vibyn.comment.infrastructure.api.dto.CommentSummaryViewDto;
 import com.melo.vibyn.comment.infrastructure.persistence.repository.QueryCommentRepository;
 import com.melo.vibyn.common.mediator.RequestHandler;
+import com.melo.vibyn.post.domain.exception.PostNotFoundException;
+import com.melo.vibyn.post.infrastructure.persistence.repository.QueryPostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,15 @@ import org.springframework.stereotype.Service;
 public class GetCommentByPostIdHandler implements RequestHandler<GetCommentByPostIdRequest, GetCommentByPostIdResponse> {
 
     private final QueryCommentRepository commentRepository;
+    private final QueryPostRepository postRepository;
 
     @Override
     public GetCommentByPostIdResponse handle(GetCommentByPostIdRequest request) {
+
+        if (!postRepository.existsById(request.postId())){
+            throw new PostNotFoundException(request.postId());
+        }
+
         Page<CommentSummaryViewDto> comments = commentRepository.findCommentSummaryByPostId(
                 request.postId(),
                 request.pageable()
