@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
 
-import com.melo.vibyn.spotify.domain.entity.UserSpotifyCredentials;
 import com.melo.vibyn.spotify.domain.port.SpotifyCredentialsPort;
+import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import com.melo.vibyn.spotify.infrastructure.persistence.mapper.UserSpotifyCredentialsMapper;
 import com.melo.vibyn.spotify.infrastructure.persistence.repository.UserSpotifyCredentialsRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +18,14 @@ public class UserSpotifyCredentialsImpl implements SpotifyCredentialsPort {
     private final UserSpotifyCredentialsMapper spotifyMapper;
 
     @Override
-    public Optional<UserSpotifyCredentials> findByUserId(UUID userId) {
-        return spotifyRepository.findByUserId(userId)
-                .map(spotifyMapper::toDomain);
+    public Optional<UserSpotifyCredentialsEntity> findByUserId(UUID userId) {
+        return spotifyRepository.findByUserId(userId);
+
     }
 
     @Override
-    public void save(UserSpotifyCredentials creds) {
-        spotifyRepository.save(spotifyMapper.toEntity(creds));
+    public void save(UserSpotifyCredentialsEntity credentialsEntity) {
+         spotifyRepository.save(credentialsEntity);
     }
+
 }

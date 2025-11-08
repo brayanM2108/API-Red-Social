@@ -1,12 +1,12 @@
 package com.melo.vibyn.spotify.domain.port;
 
-import com.melo.vibyn.spotify.domain.entity.UserSpotifyCredentials;
+import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface SpotifyCredentialsPort {
 
-    Optional<UserSpotifyCredentials> findByUserId(UUID userId);
+    Optional<UserSpotifyCredentialsEntity> findByUserId(UUID userId);
 
-    void save(UserSpotifyCredentials creds);
+    void save(UserSpotifyCredentialsEntity userSpotifyCredentialsEntity);
 }
