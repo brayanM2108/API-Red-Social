@@ -2,6 +2,7 @@ package com.melo.vibyn.spotify.application.command.callback;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
 import com.melo.vibyn.spotify.domain.port.SpotifyCredentialsPort;
+import com.melo.vibyn.spotify.domain.port.TokenEncryptionPort;
 import com.melo.vibyn.spotify.infrastructure.config.SpotifyProperties;
 import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class CallbackSpotifyHandler implements RequestHandler<CallbackSpotifyReq
 
     private final SpotifyProperties props;
     private final SpotifyCredentialsPort credentialsRepo;
-
+    private final TokenEncryptionPort tokenEncryptionService;
 
     @Override
     public String handle(CallbackSpotifyRequest request) {
@@ -53,9 +54,11 @@ public class CallbackSpotifyHandler implements RequestHandler<CallbackSpotifyReq
                     )
             );
 
-            entity.setAccessToken(accessToken);
-            entity.setRefreshToken(refreshToken);
+
+            entity.setAccessToken(tokenEncryptionService.encrypt(accessToken));
+            entity.setRefreshToken(tokenEncryptionService.encrypt(refreshToken));
             entity.setAccessTokenExpiresAt(expiresAt);
+            entity.setUpdatedAt(Instant.now());
 
             credentialsRepo.save(entity);
 
