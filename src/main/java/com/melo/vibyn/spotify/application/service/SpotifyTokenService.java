@@ -1,6 +1,6 @@
 package com.melo.vibyn.spotify.application.service;
 
-import com.melo.vibyn.common.mediator.Mediator;
+import com.melo.vibyn.spotify.application.command.refresh.RefreshSpotifyTokenHandler;
 import com.melo.vibyn.spotify.application.command.refresh.RefreshSpotifyTokenRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SpotifyTokenService {
 
-    private final Mediator mediator;
+    private final RefreshSpotifyTokenHandler refreshSpotifyTokenHandler;
 
     public String getValidAccessToken(UUID userId) {
-        return mediator.dispatch(new RefreshSpotifyTokenRequest(userId));
+        return refreshSpotifyTokenHandler.handle(new RefreshSpotifyTokenRequest(userId));
     }
 }
