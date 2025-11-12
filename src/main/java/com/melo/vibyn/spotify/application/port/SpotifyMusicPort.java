@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.port;
+package com.melo.vibyn.spotify.application.port;
 
 import com.melo.vibyn.spotify.infrastructure.api.dto.TrackDto;
 import java.util.List;
