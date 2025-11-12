@@ -1,10 +1,10 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.port.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
 
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import com.melo.vibyn.spotify.domain.port.TrackRepositoryPort;
 import com.melo.vibyn.spotify.infrastructure.persistence.entity.TrackEntity;
 import com.melo.vibyn.spotify.infrastructure.persistence.mapper.TrackEntityMapper;
-import com.melo.vibyn.spotify.infrastructure.persistence.port.JpaTrackRepository;
+import com.melo.vibyn.spotify.infrastructure.persistence.repository.JpaTrackRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

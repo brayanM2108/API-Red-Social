@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.port.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
 
 import com.melo.vibyn.spotify.application.port.SpotifyMusicPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.TrackDto;
