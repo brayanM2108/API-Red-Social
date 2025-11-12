@@ -1,9 +1,9 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.port.implementation;
 
 import com.melo.vibyn.spotify.domain.port.SpotifyCredentialsPort;
 import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import com.melo.vibyn.spotify.infrastructure.persistence.mapper.UserSpotifyCredentialsMapper;
-import com.melo.vibyn.spotify.infrastructure.persistence.repository.UserSpotifyCredentialsRepository;
+import com.melo.vibyn.spotify.infrastructure.persistence.port.UserSpotifyCredentialsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

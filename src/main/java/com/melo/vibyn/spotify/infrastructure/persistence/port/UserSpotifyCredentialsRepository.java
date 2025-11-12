@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.repository;
+package com.melo.vibyn.spotify.infrastructure.persistence.port;
 
 import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
