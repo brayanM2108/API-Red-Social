@@ -1,6 +1,6 @@
 package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
 
-import com.melo.vibyn.spotify.application.port.SpotifySearchPort;
+import com.melo.vibyn.spotify.application.port.SpotifySearchTrackPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.TrackDto;
 import com.melo.vibyn.spotify.infrastructure.config.SpotifyApiFactory;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class SpotifySearchImpl implements SpotifySearchPort {
+public class SpotifySearchTrackImpl implements SpotifySearchTrackPort {
 
     private final SpotifyApiFactory spotifyApiFactory;
 

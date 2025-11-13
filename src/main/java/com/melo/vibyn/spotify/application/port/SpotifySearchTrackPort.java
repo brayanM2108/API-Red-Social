@@ -4,9 +4,7 @@ import com.melo.vibyn.spotify.infrastructure.api.dto.TrackDto;
 import java.util.List;
 import java.util.UUID;
 
-public interface SpotifySearchPort {
+public interface SpotifySearchTrackPort {
 
     List<TrackDto> findSearchTracks(UUID userId, String query);
-
-
 }
