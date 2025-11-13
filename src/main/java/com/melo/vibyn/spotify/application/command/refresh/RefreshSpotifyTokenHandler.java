@@ -1,9 +1,11 @@
 package com.melo.vibyn.spotify.application.command.refresh;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
+import com.melo.vibyn.spotify.domain.exception.SpotifyTokenRefreshException;
 import com.melo.vibyn.spotify.domain.port.SpotifyCredentialsPort;
 import com.melo.vibyn.spotify.domain.port.TokenEncryptionPort;
 import com.melo.vibyn.spotify.infrastructure.config.SpotifyProperties;
+import com.melo.vibyn.spotify.infrastructure.persistence.entity.UserSpotifyCredentialsEntity;
 import com.melo.vibyn.user.domain.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +24,11 @@ public class RefreshSpotifyTokenHandler implements RequestHandler<RefreshSpotify
 
     @Override
     public String handle(RefreshSpotifyTokenRequest request) {
+
+        UserSpotifyCredentialsEntity credentials = credentialsRepo.findByUserId(request.userId())
+                .orElseThrow(() -> new UserNotFoundException(request.userId()));
         try {
-            var credentials = credentialsRepo.findByUserId(request.userId())
-                    .orElseThrow(() -> new UserNotFoundException(request.userId()));
+
 
             var decryptedAccessToken = tokenEncryptionService.decrypt(credentials.getAccessToken());
 
@@ -59,7 +63,7 @@ public class RefreshSpotifyTokenHandler implements RequestHandler<RefreshSpotify
 
         } catch (Exception e) {
             log.error("Error refreshing Spotify token for user {}: {}", request.userId(), e.getMessage(), e);
-            throw new RuntimeException("Failed to refresh Spotify token", e);
+            throw new SpotifyTokenRefreshException(request.userId());
         }
     }
 
