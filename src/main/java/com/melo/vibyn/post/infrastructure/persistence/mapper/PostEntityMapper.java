@@ -14,6 +14,7 @@ public interface PostEntityMapper {
     @Mapping(target = "userId", source = "creator.id")
     Post toDomain(PostEntity entity);
 
+    @Mapping(target = "tracks", ignore = true)
     @Mapping(target = "creator.id", source = "userId")
     PostEntity toEntity(Post post);
 

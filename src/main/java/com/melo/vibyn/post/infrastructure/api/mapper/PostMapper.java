@@ -5,6 +5,7 @@ import com.melo.vibyn.post.domain.entity.PostWithCreator;
 import com.melo.vibyn.post.infrastructure.api.dto.PostCreateDto;
 import com.melo.vibyn.post.infrastructure.api.dto.PostViewDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
@@ -14,5 +15,6 @@ public interface PostMapper{
 
     PostViewDto toPostDto(PostWithCreator post);
 
+    @Mapping(target = "spotifyTrackIds", source = "tracksIds")
     CreatePostRequest toCreatePostRequest(PostCreateDto createProductDto);
 }
