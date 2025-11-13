@@ -1,6 +1,7 @@
 package com.melo.vibyn.common.exceptions;
 
 import com.melo.vibyn.post.domain.exception.PostNotFoundException;
+import com.melo.vibyn.spotify.domain.exception.SpotifyTokenRefreshException;
 import com.melo.vibyn.user.domain.exception.EmailAlreadyExistsException;
 import com.melo.vibyn.user.domain.exception.NicknameAlreadyExistsException;
 import com.melo.vibyn.user.domain.exception.UserNotFoundException;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +65,19 @@ public class RestExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(SpotifyTokenRefreshException.class)
+    public ResponseEntity<ErrorResponse> handleSpotifyTokenRefreshException(HttpServletRequest request, SpotifyTokenRefreshException ex) {
+        ErrorResponse error = new ErrorResponse(
+                ex.getClass().getSimpleName(),
+                HttpStatus.BAD_GATEWAY.value(),
+                new Timestamp(System.currentTimeMillis()),
+                request.getRequestURI()
+        );
+        error.getErrors().put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(error);
+    }
+
+    @ExceptionHandler({Exception.class})
     public ResponseEntity<ErrorResponse> handleUnknownException(HttpServletRequest request, Exception ex) {
 
         ErrorResponse error = new ErrorResponse(
