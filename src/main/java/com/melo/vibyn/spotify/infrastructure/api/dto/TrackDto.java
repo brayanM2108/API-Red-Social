@@ -6,8 +6,8 @@ import java.util.List;
 public record TrackDto(
         String id,
         String name,
-        String album,
-        List<String> artist,
+        String albumName,
+        List<String> artists,
         Integer durationMs,
         String imageUrl
 ) {}

@@ -11,6 +11,8 @@ import org.mapstruct.ReportingPolicy;
 
 public interface TrackMapper {
 
+    @Mapping(target = "artists", source = "artist")
+    @Mapping(target = "albumName", source = "album")
     @Mapping(target = "id", source = "spotifyTrackId")
     TrackDto toTrackDto(TrackDomain track);
 
