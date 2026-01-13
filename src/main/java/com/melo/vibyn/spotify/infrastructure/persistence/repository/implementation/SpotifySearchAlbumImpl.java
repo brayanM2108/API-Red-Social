@@ -38,10 +38,11 @@ public class SpotifySearchAlbumImpl implements SpotifySearchAlbumPort {
                             Arrays.stream(album.getArtists())
                                     .map(ArtistSimplified::getName)
                                     .collect(Collectors.toList()),
+                            album.getReleaseDate(),
                             album.getImages().length > 0
                                     ? album.getImages()[0].getUrl()
-                                    : null,
-                            album.getReleaseDate()
+                                    : null
+
                     ))
                     .collect(Collectors.toList());
         } catch (
