@@ -2,14 +2,16 @@ package com.melo.vibyn.spotify.infrastructure.api;
 
 
 import com.melo.vibyn.common.mediator.Mediator;
+import com.melo.vibyn.spotify.application.command.savealbum.SaveAlbumRequest;
+import com.melo.vibyn.spotify.application.command.savealbum.SaveAlbumResponse;
 import com.melo.vibyn.spotify.application.query.searchalbum.SearchAlbumRequest;
 import com.melo.vibyn.spotify.application.query.searchalbum.SearchAlbumResponse;
+import com.melo.vibyn.spotify.domain.entity.AlbumDomain;
 import com.melo.vibyn.spotify.infrastructure.api.dto.AlbumDto;
+import com.melo.vibyn.spotify.infrastructure.api.mapper.AlbumMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +23,7 @@ public class SpotifyAlbumController implements SpotifyAlbumApi {
 
 
     private final Mediator mediator;
-
+    private final AlbumMapper albumMapper;
 
     @Override
     @GetMapping("/search")
@@ -32,7 +34,13 @@ public class SpotifyAlbumController implements SpotifyAlbumApi {
     }
 
     @Override
-    public ResponseEntity<AlbumDto> save(UUID userId, String albumId) {
-        return null;
+    @PostMapping
+    public ResponseEntity<AlbumDto> save(@RequestParam UUID userId, @RequestParam String albumId) {
+        SaveAlbumRequest request = new SaveAlbumRequest(userId, albumId);
+        SaveAlbumResponse response = mediator.dispatch(request);
+
+        AlbumDomain album = response.album();
+        AlbumDto albumDto = albumMapper.toAlbumDto(album);
+        return ResponseEntity.ok(albumDto);
     }
 }
