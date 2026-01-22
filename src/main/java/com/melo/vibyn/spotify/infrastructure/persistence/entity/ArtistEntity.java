@@ -26,10 +26,12 @@ public class ArtistEntity {
     private String name;
 
     @Column(name = "image_url", length = 1024)
-    private List <String> imageUrl;
+    private String imageUrl;
 
     @Column(name = "spotify_url", length = 1024)
     private String spotifyUrl;
+
+    private List<String> genres;
 
     private Integer followers;
 
