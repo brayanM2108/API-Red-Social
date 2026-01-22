@@ -32,7 +32,7 @@ public class SpotifyTrackController implements SpotifyTrackApi{
     }
 
     @Override
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<TrackDto> save(@RequestParam UUID userId, @RequestParam String trackId) {
         SaveTrackRequest request = new SaveTrackRequest(userId, trackId);
         SaveTrackResponse response = mediator.dispatch(request);
