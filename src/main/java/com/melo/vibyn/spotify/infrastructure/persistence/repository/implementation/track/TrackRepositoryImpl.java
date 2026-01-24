@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation.track;
 
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import com.melo.vibyn.spotify.domain.port.TrackRepositoryPort;
