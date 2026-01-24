@@ -11,4 +11,6 @@ public interface SpotifyArtistApi {
 
     ResponseEntity <List<ArtistDto>> search(@RequestParam UUID userId, @RequestParam String query);
 
+    ResponseEntity <ArtistDto> save(@RequestParam UUID userId, @RequestParam String artistId);
+
 }
