@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.application.query.searchartist;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
-import com.melo.vibyn.spotify.application.port.SpotifySearchArtistPort;
+import com.melo.vibyn.spotify.application.port.artist.SpotifySearchArtistPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.ArtistDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

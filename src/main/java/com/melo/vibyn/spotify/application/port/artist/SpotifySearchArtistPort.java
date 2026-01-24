@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.application.port;
+package com.melo.vibyn.spotify.application.port.artist;
 
 import com.melo.vibyn.spotify.infrastructure.api.dto.ArtistDto;
 
