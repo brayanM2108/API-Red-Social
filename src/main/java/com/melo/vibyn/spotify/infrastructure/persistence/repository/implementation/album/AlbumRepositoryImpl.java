@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation.album;
 
 import com.melo.vibyn.spotify.domain.entity.AlbumDomain;
 import com.melo.vibyn.spotify.domain.port.AlbumRepositoryPort;
