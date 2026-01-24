@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.application.port;
+package com.melo.vibyn.spotify.application.port.track;
 
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import java.util.UUID;

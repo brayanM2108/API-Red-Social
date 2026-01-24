@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.application.query.searchtrack;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
-import com.melo.vibyn.spotify.application.port.SpotifySearchTrackPort;
+import com.melo.vibyn.spotify.application.port.track.SpotifySearchTrackPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.TrackDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

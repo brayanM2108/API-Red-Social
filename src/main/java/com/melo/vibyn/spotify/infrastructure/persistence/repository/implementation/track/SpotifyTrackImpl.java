@@ -1,6 +1,6 @@
 package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation.track;
 
-import com.melo.vibyn.spotify.application.port.SpotifyTrackPort;
+import com.melo.vibyn.spotify.application.port.track.SpotifyTrackPort;
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import com.melo.vibyn.spotify.infrastructure.config.SpotifyApiFactory;
 import lombok.RequiredArgsConstructor;

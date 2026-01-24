@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.application.command.savetrack;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
-import com.melo.vibyn.spotify.application.port.SpotifyTrackPort;
+import com.melo.vibyn.spotify.application.port.track.SpotifyTrackPort;
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import com.melo.vibyn.spotify.domain.port.TrackRepositoryPort;
 import lombok.RequiredArgsConstructor;
