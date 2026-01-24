@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation;
+package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation.artist;
 
 import com.melo.vibyn.spotify.application.port.SpotifySearchArtistPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.ArtistDto;
