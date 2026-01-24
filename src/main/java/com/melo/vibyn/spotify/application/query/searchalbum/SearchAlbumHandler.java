@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.application.query.searchalbum;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
-import com.melo.vibyn.spotify.application.port.SpotifySearchAlbumPort;
+import com.melo.vibyn.spotify.application.port.album.SpotifySearchAlbumPort;
 import com.melo.vibyn.spotify.infrastructure.api.dto.AlbumDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

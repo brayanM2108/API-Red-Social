@@ -1,4 +1,4 @@
-package com.melo.vibyn.spotify.application.port;
+package com.melo.vibyn.spotify.application.port.album;
 
 import com.melo.vibyn.spotify.infrastructure.api.dto.AlbumDto;
 import java.util.List;

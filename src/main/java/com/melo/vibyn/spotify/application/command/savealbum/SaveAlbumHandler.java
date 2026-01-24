@@ -1,7 +1,7 @@
 package com.melo.vibyn.spotify.application.command.savealbum;
 
 import com.melo.vibyn.common.mediator.RequestHandler;
-import com.melo.vibyn.spotify.application.port.SpotifyAlbumPort;
+import com.melo.vibyn.spotify.application.port.album.SpotifyAlbumPort;
 import com.melo.vibyn.spotify.domain.entity.AlbumDomain;
 import com.melo.vibyn.spotify.domain.port.AlbumRepositoryPort;
 import lombok.RequiredArgsConstructor;

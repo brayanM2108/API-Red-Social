@@ -1,6 +1,6 @@
 package com.melo.vibyn.spotify.infrastructure.persistence.repository.implementation.album;
 
-import com.melo.vibyn.spotify.application.port.SpotifyAlbumPort;
+import com.melo.vibyn.spotify.application.port.album.SpotifyAlbumPort;
 import com.melo.vibyn.spotify.domain.entity.AlbumDomain;
 import com.melo.vibyn.spotify.infrastructure.config.SpotifyApiFactory;
 import lombok.RequiredArgsConstructor;
