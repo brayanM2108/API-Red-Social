@@ -1,5 +1,6 @@
 package com.melo.vibyn.post.infrastructure.persistence.entity;
 
+import com.melo.vibyn.spotify.infrastructure.persistence.entity.AlbumEntity;
 import com.melo.vibyn.spotify.infrastructure.persistence.entity.TrackEntity;
 import com.melo.vibyn.user.infrastructure.persistence.entity.UserEntity;
 import jakarta.persistence.*;
@@ -9,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -49,5 +49,12 @@ public class PostEntity {
     )
     private Set<TrackEntity> tracks = new HashSet<>();
 
-
+    @ManyToMany
+    @JoinTable(
+            name = "post_albums",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id")
+    )
+    private Set<AlbumEntity> albums = new HashSet<>();
+    
 }

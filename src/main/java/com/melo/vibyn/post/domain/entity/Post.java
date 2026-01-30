@@ -1,5 +1,6 @@
 package com.melo.vibyn.post.domain.entity;
 
+import com.melo.vibyn.spotify.domain.entity.AlbumDomain;
 import com.melo.vibyn.spotify.domain.entity.TrackDomain;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -12,6 +13,7 @@ public record Post (
         UUID userId,
         LocalDateTime createdAt,
         Boolean status,
-        Set<TrackDomain>tracks
+        Set<TrackDomain>tracks,
+        Set<AlbumDomain>albums
 )
 {}
