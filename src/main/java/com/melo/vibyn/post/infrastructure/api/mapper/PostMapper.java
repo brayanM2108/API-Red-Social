@@ -15,6 +15,7 @@ public interface PostMapper{
 
     PostViewDto toPostDto(PostWithCreator post);
 
+    @Mapping(target = "spotifyAlbumIds", source = "albumsIds")
     @Mapping(target = "spotifyTrackIds", source = "tracksIds")
     CreatePostRequest toCreatePostRequest(PostCreateDto createProductDto);
 }
