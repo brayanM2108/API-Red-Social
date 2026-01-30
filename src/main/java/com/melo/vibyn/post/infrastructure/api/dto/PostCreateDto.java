@@ -17,7 +17,9 @@ public record PostCreateDto(
        @NotNull(message = "the userId cannot be null")
        UUID userId,
 
-       Set <String> tracksIds
+       Set <String> tracksIds,
+
+       Set <String> albumsIds
 
 ) {
     public PostCreateDto {

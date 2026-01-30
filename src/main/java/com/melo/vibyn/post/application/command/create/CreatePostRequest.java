@@ -8,7 +8,8 @@ public record CreatePostRequest (
         String title,
         String content,
         UUID userId,
-        Set<String> spotifyTrackIds)
+        Set<String> spotifyTrackIds,
+        Set<String> spotifyAlbumIds)
         implements Request<CreatePostResponse>
 
 {}
