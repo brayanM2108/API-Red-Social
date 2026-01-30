@@ -24,9 +24,9 @@ public class SaveAlbumHandler implements RequestHandler<SaveAlbumRequest, SaveAl
             return new SaveAlbumResponse(existing.get());
         }
 
-        AlbumDomain track = spotifyAlbumPort.findAlbum(request.userId(), request.spotifyAlbumId());
+        AlbumDomain album = spotifyAlbumPort.findAlbum(request.userId(), request.spotifyAlbumId());
 
-        AlbumDomain saved = albumRepositoryPort.save(track);
+        AlbumDomain saved = albumRepositoryPort.save(album);
 
         return new SaveAlbumResponse(saved);
     }
